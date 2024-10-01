@@ -9,7 +9,14 @@ import java.util.Optional;
 
 public class MemberService {
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+// ++) ctrl+shift+T -> test 자동 생성 가능
+
+    // private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    public MemberService(MemberRepository memberRepository) { //의존성 주입(DI)외부에서 MemberRepository를 넣어줌
+        this.memberRepository = memberRepository;
+    }
 
     // /** 쓰고 ctrl+enter
     /**

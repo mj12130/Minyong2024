@@ -41,7 +41,6 @@ class MemoryMemberRepositoryTest {
     // [[ findByName 기능 테스트 ]]
     @Test
     public void findByName() {
-        // given
         Member member1 = new Member();
         member1.setName("spring1");
         repository.save(member1);
@@ -51,10 +50,8 @@ class MemoryMemberRepositoryTest {
         repository.save(member2);
 
         // >> 검증(이름으로 member 객체를 잘 찾는가)
-        // when
         Member result = repository.findByName("spring1").get();
 
-        // then
         assertThat(result).isEqualTo(member1);
     }
 

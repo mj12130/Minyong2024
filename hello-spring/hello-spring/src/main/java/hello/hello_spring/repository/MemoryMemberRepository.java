@@ -4,6 +4,8 @@ import hello.hello_spring.domain.Member;
 
 import java.util.*;
 
+// +) 동시성 문제가 고려되어 있지 않음, 실무에서는 ConcurrentHashMap, AtomicLong 사용 고려
+
 public class MemoryMemberRepository implements MemberRepository { // 인터페이스 MemberRepository를 구현
 
     // Map을 이용해 저장
@@ -20,7 +22,7 @@ public class MemoryMemberRepository implements MemberRepository { // 인터페�
 
     @Override
     public Optional<Member> findById(Long id) {
-        return Optional.of(store.get(id)); //store에서 id를 키로 찾아서 get 해옴 / Optional.of()로 감싸서 null 반환에 대비(null이어도 감쌀 수 있음->받은 클라이언트가 뭔가를 할 수 있음)
+        return Optional.ofNullable(store.get(id)); //store에서 id를 키로 찾아서 get 해옴 / Optional.of()로 감싸서 null 반환에 대비(null이어도 감쌀 수 있음->받은 클라이언트가 뭔가를 할 수 있음)
     }
 
     @Override
@@ -33,6 +35,10 @@ public class MemoryMemberRepository implements MemberRepository { // 인터페�
     @Override
     public List<Member> findAll() {
         return new ArrayList<>(store.values()); //store.values() -> store에 있는 모든 member 객체 반환
+    }
+
+    public void clearStore() {
+        store.clear();
     }
 
 }

@@ -3,10 +3,13 @@ package hello.hello_spring.service;
 import hello.hello_spring.domain.Member;
 import hello.hello_spring.repository.MemberRepository;
 import hello.hello_spring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+//@Service
 public class MemberService {
 
 // ++) ctrl+shift+T -> test 자동 생성 가능
@@ -14,6 +17,7 @@ public class MemberService {
     // private final MemberRepository memberRepository = new MemoryMemberRepository();
     private final MemberRepository memberRepository;
 
+    //@Autowired
     public MemberService(MemberRepository memberRepository) { //의존성 주입(DI)외부에서 MemberRepository를 넣어줌
         this.memberRepository = memberRepository;
     }

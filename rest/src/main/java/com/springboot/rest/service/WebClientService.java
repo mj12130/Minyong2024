@@ -12,7 +12,6 @@ import reactor.core.publisher.Mono;
 @Service
 public class WebClientService {
 
-    // 예제 12.10
     public String getName() {
         WebClient webClient = WebClient.builder()
             .baseUrl("http://localhost:9090")
@@ -59,7 +58,6 @@ public class WebClientService {
             .block();
     }
 
-    // 예제 12.11
     public ResponseEntity<MemberDto> postWithParamAndBody() {
         WebClient webClient = WebClient.builder()
             .baseUrl("http://localhost:9090")

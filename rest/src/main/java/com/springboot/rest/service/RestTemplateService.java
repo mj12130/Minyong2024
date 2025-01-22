@@ -1,7 +1,6 @@
 package com.springboot.rest.service;
 
 import com.springboot.rest.dto.MemberDto;
-import java.net.URI;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -13,10 +12,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
+
 @Service
 public class RestTemplateService {
 
-    // 예제 12.3
     public String getName() {
         URI uri = UriComponentsBuilder
             .fromUriString("http://localhost:9090")
@@ -61,7 +61,6 @@ public class RestTemplateService {
         return responseEntity.getBody();
     }
 
-    // 예제 12.4
     public ResponseEntity<MemberDto> postWithParamAndBody() {
         URI uri = UriComponentsBuilder
             .fromUriString("http://localhost:9090")
@@ -110,19 +109,18 @@ public class RestTemplateService {
         return responseEntity;
     }
 
-    // 예제 12.8
     public RestTemplate restTemplate() {
         HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory();
 
         HttpClient client = HttpClientBuilder.create()
-            .setMaxConnTotal(500)
-            .setMaxConnPerRoute(500)
-            .build();
+                .setMaxConnTotal(500)
+                .setMaxConnPerRoute(500)
+                .build();
 
         CloseableHttpClient httpClient = HttpClients.custom()
-            .setMaxConnTotal(500)
-            .setMaxConnPerRoute(500)
-            .build();
+                .setMaxConnTotal(500)
+                .setMaxConnPerRoute(500)
+                .build();
 
         factory.setHttpClient(httpClient);
         factory.setConnectTimeout(2000);

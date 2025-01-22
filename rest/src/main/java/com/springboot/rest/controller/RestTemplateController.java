@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-// 예제 12.6
 @RestController
 @RequestMapping("/rest-template")
 public class RestTemplateController {
